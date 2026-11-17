@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathAscend: 9-Week Accelerated Curriculum</title>
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        @media print {
+            body * { visibility: hidden; }
+            #printable-area, #printable-area * { visibility: visible; }
+            #printable-area { position: absolute; left: 0; top: 0; width: 100%; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-indigo-700 text-white shadow-md no-print">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">MathAscend Engine</h1>
+                <p class="text-indigo-200 text-sm mt-1">Accelerated 9-Week Curriculum Matrix (Grade 4 → Grade 8)</p>
+            </div>
+            <div class="bg-indigo-800 px-4 py-2 rounded-lg border border-indigo-600 text-xs">
+                Focus: Fractions, Decimals & Operations
+            </div>
+        </div>
+    </header>
+
+    <!-- App Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 no-print">
+        
+        <!-- Sidebar: Week Navigation -->
+        <aside class="w-full md:w-64 flex-shrink-0">
+            <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Curriculum Timeline</h2>
+            <nav class="space-y-1" id="week-menu">
+                <!-- Injected by JavaScript -->
+            </nav>
+        </aside>
+
+        <!-- Main Dashboard View -->
+        <section class="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <!-- Week Header Banner -->
+            <div class="bg-gradient-to-r from-indigo-600 to-blue-600 p-6 text-white">
+                <span class="text-xs font-bold uppercase tracking-widest bg-white/20 px-2.5 py-1 rounded" id="view-grade">GRADE LEVEL</span>
+                <h2 class="text-2xl font-bold mt-2" id="view-week-title">Loading Curriculum...</h2>
+                <p class="text-indigo-100 text-sm mt-1" id="view-week-desc"></p>
+            </div>
+
+            <!-- Content Workspace -->
+            <div class="p-6 space-y-8">
+                <!-- Daily Objectives -->
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 border-b pb-2 flex items-center gap-2">
+                        📅 Daily Instructional Objectives
+                    </h3>
+                    <div class="mt-4 space-y-4" id="daily-objectives-container">
+                        <!-- Injected by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Practice Sheet Action Box -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h4 class="font-bold text-gray-800">Generate Student Workspace</h4>
+                        <p class="text-sm text-gray-600">Export the comprehensive daily matching problems formatted directly for classroom printouts.</p>
+                    </div>
+                    <button onclick="printPracticeSheet()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2.5 rounded-lg shadow transition flex items-center justify-center gap-2 text-sm">
+                        🖨️ Print Practice Sheets
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Hidden Printing Sandbox -->
+    <div id="printable-area" class="hidden p-10 max-w-4xl mx-auto">
+        <!-- Injected by JavaScript on demand -->
+    </div>
+
+    <!-- Application Scripting Matrix -->
+    <script>
+        const curriculumData = [
+            {
+                week: 1,
+                grade: "Grade 4",
+                title: "Week 1: Foundations of Multi-Digit Operations & Equivalency",
+                desc: "Establishing baseline mastery of multi-digit arithmetic and intuitive physical fraction models.",
+                objectives: [
+                    { day: "Day 1", core: "Fluently add and subtract multi-digit whole numbers using the standard algorithm.", math: "4,521 + 3,879 = ?" },
+                    { day: "Day 2", core: "Multiply up to a four-digit number by a one-digit number using area models.", math: "1,234 \\times 6 = ?" },
+                    { day: "Day 3", core: "Find whole-number quotients and remainders with up to four-digit dividends.", math: "5,432 \\div 4 = ?" },
+                    { day: "Day 4", core: "Explain fraction equivalence by using visual fraction models and multiplication patterns.", math: "\\frac{2}{3} = \\frac{2 \\times 3}{3 \\times 3} = \\frac{6}{9}" },
+                    { day: "Day 5", core: "Compare two fractions with different numerators and denominators by finding common benchmarks.", math: "\\frac{3}{4} > \\frac{5}{8}" }
+                ],
+                problems: ["4,829 + 3,194", "7,402 - 2,853", "3,125 \\times 7", "4,832 \\div 6", "\\text{Simplify: } \\frac{12}{18}", "\\text{Compare using } <, >, =: \\frac{2}{3} \\text{ and } \\frac{5}{6}"]
+            },
+            {
+                week: 2,
+                grade: "Grade 4/5 Transition",
+                title: "Week 2: Fraction Operations & Base-10 Decimal Intro",
+                desc: "Transitioning from fractional pieces into composition, decomposition, and decimal place values.",
+                objectives: [
+                    { day: "Day 1", core: "Understand addition and subtraction of fractions as joining and separating parts referring to the same whole.", math: "\\frac{3}{8} + \\frac{2}{8} = \\frac{5}{8}" },
+                    { day: "Day 2", core: "Decompose a fraction into a sum of fractions with the same denominator in multiple ways.", math: "\\frac{7}{10} = \\frac{5}{10} + \\frac{2}{10}" },
+                    { day: "Day 3", core: "Add and subtract mixed numbers with like denominators.", math: "2\\frac{1}{4} + 1\\frac{2}{4} = 3\\frac{3}{4}" },
+                    { day: "Day 4", core: "Express a fraction with denominator 10 as an equivalent fraction with denominator 100.", math: "\\frac{3}{10} = \\frac{30}{100}" },
+                    { day: "Day 5", core: "Use decimal notation for fractions with denominators 10 or 100.", math: "\\frac{62}{100} = 0.62" }
+                ],
+                problems: ["\\frac{5}{12} + \\frac{4}{12}", "3\\frac{4}{5} - 1\\frac{2}{5}", "\\text{Convert to hundredths: } \\frac{7}{10}", "\\text{Write as a decimal: } \\frac{45}{100}", "\\text{Compare: } 0.7 \\text{ and } 0.68"]
+            },
+            {
+                week: 3,
+                grade: "Grade 5",
+                title: "Week 3: Advanced Fractions with Unlike Denominators",
+                desc: "Mastering standard algorithmic operations for arbitrary fractional configurations.",
+                objectives: [
+                    { day: "Day 1", core: "Add fractions with unlike denominators by replacing given fractions with equivalent fractions.", math: "\\frac{1}{3} + \\frac{1}{4} = \\frac{4}{12} + \\frac{3}{12} = \\frac{7}{12}" },
+                    { day: "Day 2", core: "Subtract fractions with unlike denominators using lowest common multiples.", math: "\\frac{4}{5} - \\frac{2}{3} = ?" },
+                    { day: "Day 3", core: "Solve word problems involving addition and subtraction of fractions using benchmark estimators.", math: "\\text{Estimate: } \\frac{7}{8} + \\frac{1}{10} \\approx 1" },
+                    { day: "Day 4", core: "Interpret a fraction as division of the numerator by the denominator.", math: "\\frac{3}{4} = 3 \\div 4" },
+                    { day: "Day 5", core: "Multiply a fraction or whole number by a fraction using mathematical models.", math: "\\frac{2}{3} \\times \\frac{4}{5} = \\frac{8}{15}" }
+                ],
+                problems: ["\\frac{2}{5} + \\frac{1}{3}", "\\frac{7}{8} - \\frac{1}{4}", "4\\frac{1}{2} + 2\\frac{2}{3}", "\\frac{3}{5} \\times \\frac{4}{7}", "12 \\times \\frac{3}{4}"]
+            },
+            {
+                week: 4,
+                grade: "Grade 5/6 Transition",
+                title: "Week 4: Complex Decimals & Reciprocal Division",
+                desc: "Exhaustive treatment of multi-digit base-10 operations and the mechanics of fraction division.",
+                objectives: [
+                    { day: "Day 1", core: "Add and subtract decimals to hundredths using place value strategies.", math: "4.25 + 1.7 = 5.95" },
+                    { day: "Day 2", core: "Multiply decimals to hundredths using concrete models or drawings.", math: "0.3 \\times 0.2 = 0.06" },
+                    { day: "Day 3", core: "Divide decimals to hundredths using properties of operations.", math: "1.5 \\div 0.5 = 3" },
+                    { day: "Day 4", core: "Divide unit fractions by non-zero whole numbers.", math: "\\frac{1}{3} \\div 4 = \\frac{1}{12}" },
+                    { day: "Day 5", core: "Divide whole numbers by unit fractions using reciprocal mechanics.", math: "6 \\div \\frac{1}{2} = 12" }
+                ],
+                problems: ["14.85 + 6.19", "32.5 - 17.84", "2.4 \\times 0.06", "4.82 \\div 0.2", "\\frac{1}{5} \\div 3", "8 \\div \\frac{1}{4}"]
+            },
+            {
+                week: 5,
+                grade: "Grade 6",
+                title: "Week 5: Absolute Operations & Quotient Modeling",
+                desc: "Scaling mathematical operations to absolute structural algorithmic efficiency across fractions and decimals.",
+                objectives: [
